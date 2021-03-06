@@ -16,8 +16,14 @@ public class QuestionService implements IQuestionService {
 	@Override
 	public void saveQuestions(Question question,MCQ mcq) {
 		// TODO Auto-generated method stub
-		question.setMcq(mcq);
-		questionRepository.save(question);
+		Question q = new Question();
+		q.setMcq(mcq);
+		q.setQuestion(question.getQuestion());
+		q.setAnswer(question.getAnswer());
+		q.setOption1(question.getOption1());
+		q.setOption2(question.getOption2());
+		
+		questionRepository.save(q);
 	}
 
 }

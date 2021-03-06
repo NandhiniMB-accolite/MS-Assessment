@@ -15,7 +15,7 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private MCQ mcq;
 	
 	@Column
@@ -76,6 +76,12 @@ public class Question {
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", mcq=" + mcq + ", question=" + question + ", option1=" + option1 + ", option2="
+				+ option2 + ", answer=" + answer + "]";
 	}
 	
 	

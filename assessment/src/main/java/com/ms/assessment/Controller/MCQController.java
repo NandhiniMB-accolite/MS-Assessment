@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ms.assessment.Entity.MCQ;
 import com.ms.assessment.Entity.Question;
 import com.ms.assessment.RequestBody.McqQuestionWrap;
@@ -29,10 +31,15 @@ public class MCQController {
 	@PostMapping("/save")
 	public MCQ saveMCQ(@RequestBody McqQuestionWrap body) {
 		
+		System.out.println(body);
 		MCQ mcq_obj=body.getMcq();
 		List<Question> questions = body.getQuestions();
-		mcqService.saveMCQ(mcq_obj);
-		questions.stream().forEach(question -> questionService.saveQuestions(question,mcq_obj));
+		MCQ mcq=mcqService.saveMCQ(mcq_obj);
+		System.out.println(mcq);
+		questions.stream().forEach(question -> { 
+		System.out.println(question);
+		questionService.saveQuestions(question,mcq);
+		});
 		return mcq_obj;
 	}
 		

@@ -27,6 +27,19 @@ public class McqQuestionWrap {
 	public void setMcq(MCQ mcq) {
 		this.mcq = mcq;
 	}
+
+	@Override
+	public String toString() {
+		return "McqQuestionWrap [questions=" + questions + ", mcq=" + mcq + "]";
+	}
+
+	public McqQuestionWrap(List<Question> questions, MCQ mcq) {
+		super();
+		this.questions = questions;
+		this.mcq = mcq;
+	}
+	
+	
 	
 	
 }
