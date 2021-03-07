@@ -1,13 +1,18 @@
 package com.ms.assessment.Entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "user")
@@ -30,7 +35,36 @@ public class User {
 
     @Column
     private Date createdOn;
+    
+    @Column
+    private Long score;
+    
+    
+//    @ManyToMany(mappedBy="particpants")
+//    private List<MCQ> mcqList;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	private List<User_Mcq> userMcqList;
 
+    public List<User_Mcq> getUserMcqList() {
+		return userMcqList;
+	}
+
+	public void setUserMcqList(List<User_Mcq> userMcqList) {
+		this.userMcqList = userMcqList;
+	}
+
+	public Long getScore() {
+		return score;
+	}
+
+	public void setScore(Long score) {
+		this.score = score;
+	}
+
+	
+   
     public String getName() {
         return name;
     }

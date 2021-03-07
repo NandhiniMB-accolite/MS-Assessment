@@ -3,14 +3,17 @@ package com.ms.assessment.Entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="mcq")
@@ -30,16 +33,18 @@ public class MCQ {
 	@ManyToOne
 	private Course course;
 	
-	@ManyToMany
-	private List<User> participants;
+//	@ManyToMany
+//	private List<User> participants;
 	
-	public Course getCourse() {
-		return course;
+	@JsonIgnore
+	@OneToMany(mappedBy="mcq",cascade=CascadeType.ALL)
+	private List<User_Mcq> userMcqList;
+	
+	public List<User_Mcq> getUserMcqList() {
+		return userMcqList;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
-	}
+	
 
 	@Column
 	private Date createdOn;
@@ -76,6 +81,17 @@ public class MCQ {
 		this.createdOn = createdOn;
 	}
 	
+	public void setUserMcqList(List<User_Mcq> userMcqList) {
+		this.userMcqList = userMcqList;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 	
 }
 
