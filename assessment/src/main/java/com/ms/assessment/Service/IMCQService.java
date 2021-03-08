@@ -13,4 +13,6 @@ public interface IMCQService {
 
 	public List<Question> findQuestions(int id);
 
+	public void deleteMCQ(int id);
+
 }

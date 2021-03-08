@@ -1,6 +1,10 @@
 package com.ms.assessment.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,5 +24,10 @@ public class UserMcqController {
 	private User_Mcq saveUserMcq(@RequestBody User_Mcq usermcq) {
 		System.out.println("here"+usermcq);
 		return user_mcqService.saveUserMcq(usermcq);
+	}
+	
+	@GetMapping("/{userId}")
+	private List<User_Mcq> getMcqByUser(@PathVariable long userId) {
+		return user_mcqService.getMcqByUser(userId);
 	}
 }

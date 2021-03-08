@@ -1,6 +1,7 @@
 package com.ms.assessment.Service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,13 @@ public class User_McqService implements IUser_McqService {
 		usermcq.setAttemptedOn(new Date(System.currentTimeMillis()));
 		return user_mcqRepository.save(usermcq);
 		//return um;
+	}
+
+
+	@Override
+	public List<User_Mcq> getMcqByUser(long userId) {
+		// TODO Auto-generated method stub
+		return user_mcqRepository.findByUserId(userId);
 	}
 
 }

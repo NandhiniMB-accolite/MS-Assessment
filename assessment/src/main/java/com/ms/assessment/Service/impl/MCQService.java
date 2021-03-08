@@ -27,6 +27,7 @@ public class MCQService implements IMCQService{
 		MCQ obj = new MCQ();
 		obj.setName(mcq.getName());
 		obj.setCreator(mcq.getCreator());
+		obj.setCourse(mcq.getCourse());
 		obj.setCreatedOn(new Date(System.currentTimeMillis()));
 		return mcqRepository.save(obj);
 				
@@ -42,6 +43,12 @@ public class MCQService implements IMCQService{
 	public List<Question> findQuestions(int id) {
 		// TODO Auto-generated method stub
 		return questionRepository.findAllById(id);
+	}
+
+	@Override
+	public void deleteMCQ(int id) {
+		// TODO Auto-generated method stub
+		 mcqRepository.deleteById(id);
 	}
 
 }

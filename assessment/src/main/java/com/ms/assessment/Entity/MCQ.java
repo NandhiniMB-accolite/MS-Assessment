@@ -40,6 +40,10 @@ public class MCQ {
 	@OneToMany(mappedBy="mcq",cascade=CascadeType.ALL)
 	private List<User_Mcq> userMcqList;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy="mcq",cascade=CascadeType.ALL)
+	private List<Question> questions;
+	
 	public List<User_Mcq> getUserMcqList() {
 		return userMcqList;
 	}
@@ -63,6 +67,15 @@ public class MCQ {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	
+	public List<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
 	}
 
 	public User getCreator() {
@@ -91,6 +104,12 @@ public class MCQ {
 
 	public void setCourse(Course course) {
 		this.course = course;
+	}
+
+	@Override
+	public String toString() {
+		return "MCQ [id=" + id + ", name=" + name + ", creator=" + creator + ", course=" + course + ", userMcqList="
+				+ userMcqList + ", createdOn=" + createdOn + "]";
 	}
 	
 }
