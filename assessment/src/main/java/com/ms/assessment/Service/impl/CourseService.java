@@ -14,8 +14,10 @@ public class CourseService implements ICourseService{
 
 	@Autowired
 	ICourseRepository courseRepository;
+	
 	public List<Course> getAllCourse() {	
 		return courseRepository.findAll();
 	}
 
 }
+
