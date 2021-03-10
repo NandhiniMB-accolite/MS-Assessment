@@ -30,4 +30,9 @@ public class UserMcqController {
 	private List<User_Mcq> getMcqByUser(@PathVariable long userId) {
 		return user_mcqService.getMcqByUser(userId);
 	}
+	
+	@GetMapping
+	private List<User_Mcq> getAllUserMcq() {
+		return user_mcqService.getAllUserMcq();
+	}
 }

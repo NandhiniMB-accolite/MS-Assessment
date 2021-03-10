@@ -10,4 +10,6 @@ public interface IUser_McqService {
 
 	List<User_Mcq> getMcqByUser(long userId);
 
+	List<User_Mcq> getAllUserMcq();
+
 }

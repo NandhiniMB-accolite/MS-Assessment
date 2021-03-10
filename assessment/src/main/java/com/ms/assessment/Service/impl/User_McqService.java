@@ -36,4 +36,11 @@ public class User_McqService implements IUser_McqService {
 		return user_mcqRepository.findByUserId(userId);
 	}
 
+
+	@Override
+	public List<User_Mcq> getAllUserMcq() {
+		// TODO Auto-generated method stub
+		return user_mcqRepository.findAll();
+	}
+
 }

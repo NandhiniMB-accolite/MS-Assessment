@@ -46,6 +46,10 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	private List<User_Mcq> userMcqList;
+	
+	@JsonIgnore
+    @OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	private List<User_Project> userProjectList;
 
     public List<User_Mcq> getUserMcqList() {
 		return userMcqList;
