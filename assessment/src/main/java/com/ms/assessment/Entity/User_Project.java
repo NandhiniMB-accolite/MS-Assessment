@@ -1,6 +1,5 @@
 package com.ms.assessment.Entity;
 
-import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -25,6 +24,25 @@ public class User_Project {
 	@ManyToOne
 	private Project project;
 	
+	@ManyToOne
+	private Course course;
+	
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public byte[] getFile() {
+		return file;
+	}
+
+	public void setFile(byte[] file) {
+		this.file = file;
+	}
+
 	@Lob
 	@Column(length=100000)
 	private byte[] file;
@@ -68,14 +86,7 @@ public class User_Project {
 	}
 
 	
-	public byte[] getData() {
-		return file;
-	}
-
-	public void setData(byte[] file) {
-		this.file = file;
-	}
-
+	
 	public int getScore() {
 		return score;
 	}
